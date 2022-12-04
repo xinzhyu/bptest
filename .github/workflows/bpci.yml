@@ -24,18 +24,18 @@ jobs:
       run: dotnet build --configuration Release
       
       
-    - name: Analyze code with SonarCloud
-      uses: sonarsource/sonarcloud-github-action@master
-      with:
-        projectBaseDir: .
-        args: >
-          -Dsonar.organization=test
-          -Dsonar.projectKey=bp
-          -Dsonar.python.coverage.reportPaths=coverage.xml
-          -Dsonar.verbose=true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#    - name: Analyze code with SonarCloud
+#      uses: sonarsource/sonarcloud-github-action@master
+#      with:
+#        projectBaseDir: .
+#        args: >
+#          -Dsonar.organization=test
+#          -Dsonar.projectKey=bp
+#          -Dsonar.python.coverage.reportPaths=coverage.xml
+#          -Dsonar.verbose=true
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
     - name: Run unit tests
       run: dotnet test TestProject1/TestProject1.csproj --no-restore --collect "Code coverage" -l:trx
